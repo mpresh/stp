@@ -1,0 +1,5 @@
+docopt
+requests
+beautifulsoup4
+xmltodict
+MySQL-python

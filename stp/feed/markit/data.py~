@@ -1,0 +1,23 @@
+import requests
+import xmltodict
+from stp import config
+
+URL = "http://dev.markitondemand.com/MODApis/Api/v2/Quote?symbol={}"
+
+
+def insert_stock(record):
+    
+
+def get_stocks_to_watch():
+    stocks = {}
+    for stock in config.stocks_to_watch:
+        stocks[stock] = get_stock(stock)
+    return stocks
+
+def get_stock(stock):
+    result = requests.get(URL.format(stock)).text
+    result = xmltodict.parse(result)["StockQuote"]
+    return dict(result)
+    
+if __name__ == "__main__":
+    print(get_stocks_to_watch())
